@@ -5,7 +5,8 @@ RUN    apk update \
     && apk add openssh \
     && mkdir /root/.ssh \
     && chmod 0700 /root/.ssh \
-    && ssh-keygen -A 
+    && ssh-keygen -A \
+    && sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
 
 # This image expects AUTHORIZED_KEYS environment variable to contain your ssh public key.
 
